@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "G8xFETgQ/fihNw1dg4kAt3rZh+yb1U/U6IWohWMSJRw=",
+  "Source": "Cart",
+  "BasePath": "_content/Cart",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Cart\\wwwroot",
+      "Source": "Cart",
+      "ContentRoot": "C:\\Đại học\\advance web\\doan\\CartSln\\Cart\\wwwroot\\",
+      "BasePath": "_content/Cart",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}

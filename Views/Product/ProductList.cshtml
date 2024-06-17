@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Product";
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model ?? Enumerable.Empty<Product>())
+        {
+            <tr>
+                <td>@p.id</td>
+                <td>@p.name</td>
+                <td>@p.price</td>
+                <td class="text-center">
+                    <form asp-page="/Cart" method="post">
+                        <input type="hidden" name="id" value="@p.id" />
+                        <input type="hidden" name="returnUrl" value="@Context." />
+                        <button type="submit" class="btn btn-success btn-sm">
+                            Add To Cart
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

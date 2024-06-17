@@ -1,0 +1,50 @@
+﻿@page
+@model Cart.Pages.CartModel
+<h2>Your cart</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Quantity</th>
+            <th>Item</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Subtotal</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model != null)
+        {
+            @foreach (var line in Model?.cart?.CartItems ?? Enumerable.Empty<CartItem>())
+            {
+                <tr>
+                    <td class="text-center">@line._quantity</td>cd
+                    <td class="text-left">@line._product.name</td>
+                    <td class="text-right">@line._product.price.ToString("c")</td>
+                    <td class="text-right">
+                        @((line._quantity * line._product.price).ToString("c"))
+                    </td>
+                    <td class="text-center">
+                        <form asp-page-handler="Remove" method="post">
+                            <input type="hidden" name="id" value="@line._product.id" />
+                            <input type="hidden" name="returnUrl" value="@Model?.ReturnUrl" />
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                Remove
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        } else {<h2>yr cart empty</h2>}
+    </tbody>
+
+
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total:</td>
+            <td class="text-right">
+                @Model?.cart.Total()
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
